@@ -4,14 +4,16 @@ Example command:
 
 # pylint: disable=line-too-long
 python3 submission_runner.py \
-    --workload=mnist \
-    --framework=jax \
-    --submission_path=reference_algorithms/development_algorithms/mnist/mnist_jax/submission.py \
+    --workload=cifar \
+    --framework=pytorch \
+    --submission_path=reference_algorithms/development_algorithms/cifar/cifar_pytorch/submission.py \
     --tuning_ruleset=external \
-    --tuning_search_space=reference_algorithms/development_algorithms/mnist/tuning_search_space.json \
+    --tuning_search_space=reference_algorithms/development_algorithms/cifar/tuning_search_space.json \
     --num_tuning_trials=3 \
-    --experiment_dir=/home/znado/experiment_dir \
-    --experiment_name=baseline
+    --experiment_dir=/kaggle/working/algorithmic-efficiency \
+    --experiment_name=baseline \
+    --data_dir=~/data/cifar10 \
+    --torch_compile=False
 """
 
 import datetime

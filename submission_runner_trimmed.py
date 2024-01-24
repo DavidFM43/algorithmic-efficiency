@@ -174,7 +174,7 @@ def train_once(
             global_step,
             preemption_count,
         ) = checkpoint_utils.maybe_restore_checkpoint(
-            FLAGS.framework,
+            "pytorch",
             optimizer_state,
             model_params,
             model_state,
@@ -271,7 +271,7 @@ def train_once(
                         )
                         if save_checkpoints:
                             checkpoint_utils.save_checkpoint(
-                                framework=FLAGS.framework,
+                                framework="pytorch",
                                 optimizer_state=optimizer_state,
                                 model_params=model_params,
                                 model_state=model_state,
@@ -304,7 +304,7 @@ def train_once(
         )
         metrics_logger.finish()
         checkpoint_utils.save_checkpoint(
-            framework=FLAGS.framework,
+            framework="pytorch",
             optimizer_state=optimizer_state,
             model_params=model_params,
             model_state=model_state,

@@ -117,7 +117,7 @@ class SennetWorkload(BaseSennetWorkload):
         spec.ForwardPassMode.TRAIN: contextlib.nullcontext,
     }
     with contexts[mode]():
-      logits_batch = model(inputs)
+      logits_batch = model(inputs).squeeze()
     return logits_batch, None
 
   # Does NOT apply regularization, which is left to the submitter to do in
@@ -134,11 +134,12 @@ class SennetWorkload(BaseSennetWorkload):
     valid examples in batch, 'per_example': 1-d array of per-example losses}
     (not synced across devices).
     """
+    del label_smoothing
     per_example_losses = F.binary_cross_entropy_with_logits(
         logits_batch,
         label_batch,
         reduction='none',
-        label_smoothing=label_smoothing)
+    )
     # `mask_batch` is assumed to be shape [batch].
     if mask_batch is not None:
       per_example_losses *= mask_batch

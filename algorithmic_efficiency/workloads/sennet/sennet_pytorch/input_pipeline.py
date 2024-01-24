@@ -10,7 +10,7 @@ class KidneyDataset(torch.utils.data.Dataset):
             self.msks_dir = f"{data_dir}kidney_1_dense/labels/"
         elif split == "validation":
             self.imgs_dir = f"{data_dir}kidney_3_sparse/images/"
-            self.msks_dir = f"{data_dir}kidney_3_dense/labels/"
+            self.msks_dir = f"{data_dir}kidney_3_sparse/labels/"
 
         self.slices_ids = sorted(os.listdir(self.imgs_dir))
         self.transforms = transforms
@@ -40,4 +40,4 @@ class KidneyDataset(torch.utils.data.Dataset):
         img /= 31000
         msk = msk // 255
 
-        return img, msk
+        return img, msk.float()

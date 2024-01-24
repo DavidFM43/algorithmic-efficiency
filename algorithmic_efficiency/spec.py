@@ -320,7 +320,7 @@ class Workload(metaclass=abc.ABCMeta):
     """Run a full evaluation of the model."""
     logging.info('Evaluating on the training split.')
     train_metrics = self._eval_model_on_split(
-        split='eval_train',
+        split='train',
         num_examples=self.num_eval_train_examples,
         global_batch_size=global_batch_size,
         params=params,

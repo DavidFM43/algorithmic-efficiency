@@ -9,6 +9,9 @@ from algorithmic_efficiency import spec
 BASE_WORKLOADS_DIR = 'algorithmic_efficiency/workloads/'
 
 WORKLOADS = {
+    'sennet': {
+        'workload_path': 'sennet/sennet', 'workload_class_name': 'SennetWorkload'
+    },
     'cifar': {
         'workload_path': 'cifar/cifar', 'workload_class_name': 'CifarWorkload'
     },

@@ -12,7 +12,7 @@ from algorithmic_efficiency import spec
 
 def get_batch_size(workload_name):
   # Return the global batch size.
-  batch_sizes = {'cifar': 128}
+  batch_sizes = {'cifar': 128, "sennet": 32}
   return batch_sizes[workload_name]
 
 

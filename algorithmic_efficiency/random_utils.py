@@ -59,21 +59,12 @@ def _check_jax_install() -> None:
 
 
 def fold_in(seed: SeedType, data: Any) -> List[Union[SeedType, Any]]:
-  if FLAGS.framework == 'jax':
-    _check_jax_install()
-    return jax_rng.fold_in(seed, data)
   return _fold_in(seed, data)
 
 
 def split(seed: SeedType, num: int = 2) -> SeedType:
-  if FLAGS.framework == 'jax':
-    _check_jax_install()
-    return jax_rng.split(seed, num)
   return _split(seed, num)
 
 
 def PRNGKey(seed: SeedType) -> SeedType:  # pylint: disable=invalid-name
-  if FLAGS.framework == 'jax':
-    _check_jax_install()
-    return jax_rng.PRNGKey(seed)
   return _PRNGKey(seed)
